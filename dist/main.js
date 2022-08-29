@@ -1,32 +1,51 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ({
-
-/***/ "./src/index.js":
+var __webpack_exports__ = {};
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ (() => {
+// function ships(){
+//     console.log('ships has sailed')
+// }
+// ships();
 
-eval("function ships(){\n    console.log('ships has sailed')\n}\nships();\n\n//# sourceURL=webpack://battleship/./src/index.js?");
+const ships = (len) =>{ // length will be from 
+    let healthBar = len;
+    return {
+        length: ()=>{
+            return len 
+        },
+        hit: (num)=>{
+            //get the attck hit location
+            //mark position in gameboard as a hit
+            healthBar = healthBar - num;
+            console.log("this ship took hit: " + num)
+            return 
+        },
+        isSunk: ()=>{
+            //check the ship if sunken yet
+            if(healthBar <= 0) {
+                console.log('ship is destroyed');
+                return  
+            } 
+            else {
+                console.log('ship is still intact');
+                return 
+            }
+        }, 
+        healthBar : ()=> {
+            console.log("this ship health: " + healthBar);
+        }
+    }
+}
 
-/***/ })
+const bigShip = ships(5);
+const midShip = ships(3);
+const midShip2 = ships(3);
+const smollShip = ships(1);
 
-/******/ 	});
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/index.js"]();
-/******/ 	
+bigShip.hit(5);
+bigShip.healthBar();
+bigShip.isSunk();
 /******/ })()
 ;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5qcyIsIm1hcHBpbmdzIjoiOzs7OztBQUFBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLHdCQUF3QjtBQUN4QjtBQUNBO0FBQ0E7QUFDQTtBQUNBLFNBQVM7QUFDVDtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxTQUFTO0FBQ1Q7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxTQUFTO0FBQ1Q7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0EsaUIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9iYXR0bGVzaGlwLy4vc3JjL2luZGV4LmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGZ1bmN0aW9uIHNoaXBzKCl7XG4vLyAgICAgY29uc29sZS5sb2coJ3NoaXBzIGhhcyBzYWlsZWQnKVxuLy8gfVxuLy8gc2hpcHMoKTtcblxuY29uc3Qgc2hpcHMgPSAobGVuKSA9PnsgLy8gbGVuZ3RoIHdpbGwgYmUgZnJvbSBcbiAgICBsZXQgaGVhbHRoQmFyID0gbGVuO1xuICAgIHJldHVybiB7XG4gICAgICAgIGxlbmd0aDogKCk9PntcbiAgICAgICAgICAgIHJldHVybiBsZW4gXG4gICAgICAgIH0sXG4gICAgICAgIGhpdDogKG51bSk9PntcbiAgICAgICAgICAgIC8vZ2V0IHRoZSBhdHRjayBoaXQgbG9jYXRpb25cbiAgICAgICAgICAgIC8vbWFyayBwb3NpdGlvbiBpbiBnYW1lYm9hcmQgYXMgYSBoaXRcbiAgICAgICAgICAgIGhlYWx0aEJhciA9IGhlYWx0aEJhciAtIG51bTtcbiAgICAgICAgICAgIGNvbnNvbGUubG9nKFwidGhpcyBzaGlwIHRvb2sgaGl0OiBcIiArIG51bSlcbiAgICAgICAgICAgIHJldHVybiBcbiAgICAgICAgfSxcbiAgICAgICAgaXNTdW5rOiAoKT0+e1xuICAgICAgICAgICAgLy9jaGVjayB0aGUgc2hpcCBpZiBzdW5rZW4geWV0XG4gICAgICAgICAgICBpZihoZWFsdGhCYXIgPD0gMCkge1xuICAgICAgICAgICAgICAgIGNvbnNvbGUubG9nKCdzaGlwIGlzIGRlc3Ryb3llZCcpO1xuICAgICAgICAgICAgICAgIHJldHVybiAgXG4gICAgICAgICAgICB9IFxuICAgICAgICAgICAgZWxzZSB7XG4gICAgICAgICAgICAgICAgY29uc29sZS5sb2coJ3NoaXAgaXMgc3RpbGwgaW50YWN0Jyk7XG4gICAgICAgICAgICAgICAgcmV0dXJuIFxuICAgICAgICAgICAgfVxuICAgICAgICB9LCBcbiAgICAgICAgaGVhbHRoQmFyIDogKCk9PiB7XG4gICAgICAgICAgICBjb25zb2xlLmxvZyhcInRoaXMgc2hpcCBoZWFsdGg6IFwiICsgaGVhbHRoQmFyKTtcbiAgICAgICAgfVxuICAgIH1cbn1cblxuY29uc3QgYmlnU2hpcCA9IHNoaXBzKDUpO1xuY29uc3QgbWlkU2hpcCA9IHNoaXBzKDMpO1xuY29uc3QgbWlkU2hpcDIgPSBzaGlwcygzKTtcbmNvbnN0IHNtb2xsU2hpcCA9IHNoaXBzKDEpO1xuXG5iaWdTaGlwLmhpdCg1KTtcbmJpZ1NoaXAuaGVhbHRoQmFyKCk7XG5iaWdTaGlwLmlzU3VuaygpOyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==
