@@ -29,6 +29,7 @@ const ships = (len) =>{ // length will be from
         }, 
         healthBar : ()=> {
             console.log("this ship health: " + healthBar);
+            return healthBar
         }
     }
 }
@@ -41,3 +42,5 @@ const smollShip = ships(1);
 bigShip.hit(5);
 bigShip.healthBar();
 bigShip.isSunk();
+
+export {ships}
