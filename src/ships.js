@@ -1,9 +1,5 @@
-// function ships(){
-//     console.log('ships has sailed')
-// }
-// ships();
 
-const ships = (len) =>{ // length will be from 
+const ships = (len) =>{ // length will be from size of the ship
     let healthBar = len;
     return {
         length: ()=>{
@@ -35,9 +31,8 @@ const ships = (len) =>{ // length will be from
 }
 
 const bigShip = ships(5);
-const midShip = ships(3);
 const midShip2 = ships(3);
-const smollShip = ships(1);
+const smallShip = ships(1);
 
 bigShip.hit(5);
 bigShip.healthBar();
