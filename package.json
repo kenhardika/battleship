@@ -4,6 +4,7 @@
   "description": "Battleship - The Game",
   "main": "ships.js",
   "private": true,
+  "type": "module",
   "scripts": {
     "test": "jest",
     "build": "webpack"
