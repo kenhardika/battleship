@@ -45,7 +45,7 @@ const gameboard = ()=> {
             // if not marks the coordinate with missedAttack()
             //return
         },
-        checkAllShip: ()=>{
+        checkTotalHealth: ()=>{
             // check the healthbar of each ships with ship.healthbar()
             allShip.forEach((ship)=>{
                 ship.location(); 
@@ -53,7 +53,13 @@ const gameboard = ()=> {
             });
             console.log(totalHealth);
             // if all the healthbar is 0 then the game is ended
-            return totalHealth 
+            if(totalHealth <= 0){
+                console.log("GAME OVER ALL OF YOUR SHIPS WRECKED")
+                return totalHealth
+            }
+            else{
+                return totalHealth
+            } 
         },
         checkAllLocation: ()=>{
             refreshAllLocation();
@@ -68,21 +74,21 @@ const gameboard = ()=> {
     }
 }
 
-const playa = gameboard();
-const bigShipCoor = '6B 7B 8B 9B 10B';
-const midShipCoor = '4B 4C 4D';
-const midShip = ships(midShipCoor);
-const bigShip = ships(bigShipCoor);
+// const playa = gameboard();
+// const bigShipCoor = '6B 7B 8B 9B 10B';
+// const midShipCoor = '4B 4C 4D';
+// const midShip = ships(midShipCoor);
+// const bigShip = ships(bigShipCoor);
 
-playa.placement(bigShip);
-playa.placement(midShip);
-playa.receiveAttack("7B");debugger
-playa.receiveAttack("7B");debugger
-playa.receiveAttack("4D");debugger
-playa.receiveAttack("3B");debugger
-playa.checkAllLocation();
-playa.checkAttackMissed();
-playa.checkAllShip(); 
+// playa.placement(bigShip);
+// playa.placement(midShip);
+// playa.receiveAttack("4B");debugger
+// playa.receiveAttack("4C");debugger
+// playa.receiveAttack("4D");debugger
+// playa.receiveAttack("3B");debugger
+// playa.checkAllLocation();
+// playa.checkAttackMissed();
+// playa.checkTotalHealth(); 
 // revise this
 // playa.placement('1A 2A 3A', ships(3));
 // playa.placement('3B 4B', ships(2));
