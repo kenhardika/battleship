@@ -1,7 +1,8 @@
-import { ships } from "./ships.js"
+import ships from "./ships.js";
 
 const gameboard = ()=> {
-    console.log('gameboard is on')
+
+    console.log('gameboard is on');
     let shipCoordinate = [];
     let objShip = {
         mainShip: [],
@@ -9,7 +10,7 @@ const gameboard = ()=> {
         smallShip: []
     };
     return {
-        placement: (coor, ships)=>{
+        placement: (coor, ships)=>{ // dont need coor since coordinate should be inside the ship()
             // make sure the coordinate is valid, which means empty and one block away from another ship
             // place the ships on the coordinate      
             shipCoordinate.push(coor.split(" "));
@@ -37,7 +38,7 @@ const gameboard = ()=> {
             // marks the coordinate with ships' marks
             return
         },
-        receiveAttack: (coor)=>{
+        receiveAttack: ()=>{
             // check if its hit the ship
             // if its hits the ship, toggle ship.hit()
             // toggle checkAllShip() to make sure if its not endgame
@@ -56,11 +57,9 @@ const gameboard = ()=> {
         }
     }
 }
-let midShip = ships(3);
-let smallShip = ships(2);
-
 
 const playa = gameboard();
+// revise this
 playa.placement('1A 2A 3A', ships(3));
 playa.placement('3B 4B', ships(2));
 playa.placement('6B 7B 8B 9B 10B', ships(5));
