@@ -1,20 +1,30 @@
-import { gameboard } from "./gameboard";
+
+// const yourGameboard = gameboard();
+// const humanGameboard = gameboard();
+// const AIGameboard = gameboard();
+
+const player = () => {
+    // player should take turns playing the game by attacking opponent's gameboard.
+    let attackStatus = 'OFF';
+    // player attacking state is ON
+    // player CHOOSE the coordinate of opponent's gameboard.
+    // player attacking state is OFF
+    return {
+        toggleAttackON : ()=> attackStatus = "ON",
+        toggleAttackOFF : ()=> attackStatus = "OFF",
+        checkAttack: ()=> {
+            console.log(attackStatus); 
+            return attackStatus
+        }
+    }
+}
+
+// let playe = player();
 
 
-// player. What does player do.
-// player start the game by choosing who youre playing with
-// player choose is it gonna be vs AI or vs Human
-// at this point, if you choose AI. AI will automatically place their ships randomly on gameboard.
-// player choose the ships placement accross the gameboard.
-// ship's placement is based on one rule that there is always one empty block between one and another placed ships
-// player have a choice to randomly place the ships by clicking the random button. 
-// player placement order is.. first you place one big ship (5 in length), then two mid ship (3 in length), then three small ship (2 in length) 
-// after all ships are placed, game initiate to start attacking by choosing the opponents's gameboard. This phase you could hit opponents's ship.
-// after you attack opponent's ship, game automatically change to opponent's turn. This time Opponent's will initiate attack player's gameboard randomly. 
-// Game repeating the previous step until one of the player/AI ships are fully cleaned (all destroyed)
-// game ending if one of the player/AI total healthbar (ships) are = 0. 
+// playe.checkAttack();
+// playe.toggleAttackON();
+// playe.checkAttack();
 
-const player = gameboard();
-// const human = gameboard();
-const AI = gameboard();
 
+export default player;

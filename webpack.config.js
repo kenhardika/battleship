@@ -1,7 +1,7 @@
 const path = require('path');
 module.exports = {
   mode:'development',
-  entry: './src/ships.js',
+  entry: './src/maingame.js',
   devtool: 'inline-source-map',
   output: {
     filename: 'main.js',

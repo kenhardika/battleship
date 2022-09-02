@@ -1,4 +1,3 @@
-import ships from "./ships.js";
 
 const gameboard = ()=> {
     let allShip = [];
@@ -74,6 +73,8 @@ const gameboard = ()=> {
     }
 }
 
+export default gameboard;
+
 // const playa = gameboard();
 // const bigShipCoor = '6B 7B 8B 9B 10B';
 // const midShipCoor = '4B 4C 4D';
@@ -94,6 +95,3 @@ const gameboard = ()=> {
 // playa.placement('3B 4B', ships(2));
 // playa.placement('6B 7B 8B 9B 10B', ships(5));
 // playa.placement('6E 7E 8E 9E 10E', ships(5));
-
-
-export {gameboard}
