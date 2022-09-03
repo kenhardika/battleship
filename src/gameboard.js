@@ -16,7 +16,7 @@ const gameboard = ()=> {
         attackMissed.push(coor);
     }
 
-    console.log('gameboard is on');
+    //console.log('gameboard is on');
     return {
         placement: (ships)=>{ // dont need coor since coordinate should be inside the ship()
             // make sure the coordinate is valid, which means empty and one block away from another ship

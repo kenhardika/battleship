@@ -13,30 +13,76 @@
 // The AI does not have to be smart, but it should know whether or not a given move is legal. (i.e. it shouldn’t shoot the same coordinate twice). 
 // Game repeating the previous step until one of the player/AI ships are fully cleaned (all destroyed)
 // game ending if one of the player/AI total healthbar (ships) are = 0. 
+// 1	Carrier	5
+// 2	Battleship	4
+// 3	Cruiser	3
+// 4	Submarine	3
+// 5	Destroyer	2
+
 
 import player from "./player.js";
 import gameboard from "./gameboard.js"
+import ships from "./ships.js";
 
-const PLAYERONE = player();
-const playerGameboard = gameboard();
-const AIGameboard = gameboard();
 
 // console.log(PLAYERONE);debugger
 // console.log(playerGameboard);debugger
 
-function shipPlacement(){
-
-    return {
-        
-    }
-}
-
 function startGame(){
+    const PLAYERONE = player();
+    const AI = player();
+    const playerGameboard = gameboard();
+    const AIGameboard = gameboard();
+
+    function placeRandomizer(leng){
+        const MAX_GRID = 10;
+        const randomAxis = Math.floor(Math.random() * 2); // only return 0/1
+        const array = [];
+        const alphabet = "abcdefghij";
+        const randomNumber = Math.floor(Math.random() * (MAX_GRID - leng)) + 1; // this randomizer number keep you from overflowing, plus one so it start from 1 not 0
+        const randomAlp = alphabet[Math.floor(Math.random() * alphabet.substring(0,(MAX_GRID - leng)).length)]; // this randomizer keeps you from value more than length
+        let alphaNum;
+
+        if (randomAxis === 0){ // X axis blocks
+            for (let i = 0; i <leng; i++ ){
+                alphaNum = (randomNumber + i).toString().concat(randomAlp);
+                array.push(alphaNum);
+            }
+            // console.log(array);
+            // console.log(randomAxis);
+            return array
+        }
+        else { // Y axis blocks
+            for (let i = 0; i <leng; i++ ){
+                const alpLoop = alphabet.charAt(alphabet.indexOf(randomAlp) + i);
+                alphaNum = (randomNumber).toString().concat(alpLoop);
+                array.push(alphaNum);
+            }
+            // console.log(array);
+            // console.log(randomAxis);
+            return array
+        }
+    }
+
+    function AIPlacement(){
+        // get the coordinate first, then going up
+        let bigShipCoor = placeRandomizer(5).toString(); // get data from DOM
+        let bigShip = ships(bigShipCoor); // coordinate assign to ships()
+
+        // console.log(bigShip.toString());
+        AIGameboard.placement(bigShip);
+        AIGameboard.checkAllLocation();
+    }
+
     return {
         versusAI: ()=>{
-        // AI automatically place the ships
-
+        // AI automatically place the ships 
+        // AI randomizer placement mirip random button human placement
+        // AIGameboard.placement()
+        AIPlacement();
         // player manually place the ship
         }
     }
 }
+
+startGame().versusAI();

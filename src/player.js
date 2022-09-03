@@ -9,13 +9,15 @@ const player = () => {
     // player attacking state is ON
     // player CHOOSE the coordinate of opponent's gameboard.
     // player attacking state is OFF
+    // let yourGameboard = gameboard();
     return {
         toggleAttackON : ()=> attackStatus = "ON",
         toggleAttackOFF : ()=> attackStatus = "OFF",
         checkAttack: ()=> {
             console.log(attackStatus); 
             return attackStatus
-        }
+        },
+        
     }
 }
 
