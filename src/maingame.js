@@ -23,6 +23,8 @@
 import player from "./player.js";
 import gameboard from "./gameboard.js"
 import ships from "./ships.js";
+import placeRandomizer from "./placeRandomizer.js";
+import findCommonElements from "./findCommonElements.js";
 
 
 // console.log(PLAYERONE);debugger
@@ -33,45 +35,28 @@ function startGame(){
     const AI = player();
     const playerGameboard = gameboard();
     const AIGameboard = gameboard();
-
-    function placeRandomizer(leng){
-        const MAX_GRID = 10;
-        const randomAxis = Math.floor(Math.random() * 2); // only return 0/1
-        const array = [];
-        const alphabet = "abcdefghij";
-        const randomNumber = Math.floor(Math.random() * (MAX_GRID - leng)) + 1; // this randomizer number keep you from overflowing, plus one so it start from 1 not 0
-        const randomAlp = alphabet[Math.floor(Math.random() * alphabet.substring(0,(MAX_GRID - leng)).length)]; // this randomizer keeps you from value more than length
-        let alphaNum;
-
-        if (randomAxis === 0){ // X axis blocks
-            for (let i = 0; i <leng; i++ ){
-                alphaNum = (randomNumber + i).toString().concat(randomAlp);
-                array.push(alphaNum);
-            }
-            // console.log(array);
-            // console.log(randomAxis);
-            return array
-        }
-        else { // Y axis blocks
-            for (let i = 0; i <leng; i++ ){
-                const alpLoop = alphabet.charAt(alphabet.indexOf(randomAlp) + i);
-                alphaNum = (randomNumber).toString().concat(alpLoop);
-                array.push(alphaNum);
-            }
-            // console.log(array);
-            // console.log(randomAxis);
-            return array
-        }
-    }
-
+    
     function AIPlacement(){
         // get the coordinate first, then going up
-        let bigShipCoor = placeRandomizer(5).toString(); // get data from DOM
-        let bigShip = ships(bigShipCoor); // coordinate assign to ships()
+        // check the placeRandomizer, if any element from it will clash with current array of placement
+        const shipCoor = '1a,2a,3a,4a,5a';
+        const fakeShip = ships(shipCoor);
+        AIGameboard.placement(fakeShip);
+        //AIGameboard.checkAllLocation();
+        let bigShipCoor = placeRandomizer(5); // get data from DOM
+        console.log(bigShipCoor);
+        
+        
+        if (findCommonElements(AIGameboard.checkAllLocation(), bigShipCoor) === true){
+            console.log('CLASHED');
+        }
+
+        // let bigShipCoor = placeRandomizer(5).toString(); // get data from DOM
+        //let bigShip = ships(bigShipCoor); // coordinate assign to ships()
 
         // console.log(bigShip.toString());
-        AIGameboard.placement(bigShip);
-        AIGameboard.checkAllLocation();
+        //AIGameboard.placement(bigShip);
+        //AIGameboard.checkAllLocation();
     }
 
     return {
