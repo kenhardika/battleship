@@ -8,47 +8,82 @@ function placeGap(mainArray){
     const alphabetMax = 'abcdefghij';
     const alpArray = alphabetMax.split('');
     mainArray.forEach((val)=>{
-        let numb = parseInt(val.match(numberPatt).join(''));
-        let alph = val.match(alphaPatt).join('');
-        let numbMinusOne = numb - 1;
-        let numbPlusOne = numb + 1;
-        let alphPlusOne = alpArray[(alpArray.indexOf(alph))+1];
-        let alphMinusOne = alpArray[(alpArray.indexOf(alph))-1];
+        const numb = parseInt(val.match(numberPatt).join(''));
+        const alph = val.match(alphaPatt).join('');
+        const numbMinusOne = numb - 1;
+        const numbPlusOne = numb + 1;
+        const alphPlusOne = alpArray[(alpArray.indexOf(alph))+1];
+        const alphMinusOne = alpArray[(alpArray.indexOf(alph))-1];
         
-        // horizontal check
-        // -1 number is (alph normal) 
-        outputArray.push((numbMinusOne).toString().concat(alph));
-        // put inside output array 
-        // +1 number is
-        outputArray.push((numbPlusOne).toString().concat(alph));
-        // put inside output array 
+        function mergeArray(){
+              // merge the array
+            resultArray = resultArray.concat(outputArray);
+            resultArray = [...new Set ([...mainArray, ...outputArray])];  
+        }
 
-        // vertical check
-        // -1 alpha is  
-        outputArray.push((numb).toString().concat(alphMinusOne));
-        // put inside output array
-        // +1 alpha is
-        outputArray.push((numb).toString().concat(alphPlusOne));
-        // put inside output array
-
-        //diagonal left check
-        outputArray.push((numbMinusOne).toString().concat(alphMinusOne));
-        outputArray.push((numbMinusOne).toString().concat(alphPlusOne));
-        //diagonal right check
-        outputArray.push((numbPlusOne).toString().concat(alphMinusOne));
-        outputArray.push((numbPlusOne).toString().concat(alphPlusOne));
+        if (numbMinusOne < 1){
+            outputArray.push((numbPlusOne).toString().concat(alph)); // right
+            outputArray.push((numb).toString().concat(alphMinusOne)); // up
+            outputArray.push((numb).toString().concat(alphPlusOne)); // down
+            outputArray.push((numbPlusOne).toString().concat(alphMinusOne)); // up right
+            outputArray.push((numbPlusOne).toString().concat(alphPlusOne)); // down right
+            console.log('hit number = 0');
+            mergeArray();
+            return
+        }
+        if(numbPlusOne > 10){
+            outputArray.push((numbMinusOne).toString().concat(alph)); // left
+            outputArray.push((numb).toString().concat(alphMinusOne)); // up
+            outputArray.push((numb).toString().concat(alphPlusOne)); // down
+            outputArray.push((numbMinusOne).toString().concat(alphMinusOne)); // up left
+            outputArray.push((numbMinusOne).toString().concat(alphPlusOne)); // down left
+            console.log('hit number > 10');
+            mergeArray();
+            return
+        }
         
-        // merge the array
-        resultArray = resultArray.concat(outputArray);
-        resultArray = [...new Set ([...mainArray, ...outputArray])];    
+        if (alphMinusOne == undefined){
+            console.log('hits undefined');
+            outputArray.push((numbMinusOne).toString().concat(alph)); // left
+            outputArray.push((numbPlusOne).toString().concat(alph)); // right
+            outputArray.push((numb).toString().concat(alphPlusOne)); // down
+            outputArray.push((numbMinusOne).toString().concat(alphPlusOne)); // down left
+            outputArray.push((numbPlusOne).toString().concat(alphPlusOne)); // down right
+            mergeArray();
+            return
+        }
+        if (alphPlusOne == undefined){
+            console.log('hits undefined');
+            outputArray.push((numbMinusOne).toString().concat(alph)); // left
+            outputArray.push((numbPlusOne).toString().concat(alph)); // right
+            outputArray.push((numb).toString().concat(alphMinusOne)); // up
+            outputArray.push((numbMinusOne).toString().concat(alphMinusOne)); // up left
+            outputArray.push((numbPlusOne).toString().concat(alphMinusOne)); // up right
+            mergeArray();
+            return
+        }
+        else{
+                // horizontal check
+                outputArray.push((numbMinusOne).toString().concat(alph)); // left
+                outputArray.push((numbPlusOne).toString().concat(alph)); // right
+                // vertical check
+                outputArray.push((numb).toString().concat(alphMinusOne)); // up
+                outputArray.push((numb).toString().concat(alphPlusOne)); // down
+                //diagonal left check
+                outputArray.push((numbMinusOne).toString().concat(alphMinusOne)); // up left
+                outputArray.push((numbMinusOne).toString().concat(alphPlusOne)); // down left
+                //diagonal right check
+                outputArray.push((numbPlusOne).toString().concat(alphMinusOne)); // up right
+                outputArray.push((numbPlusOne).toString().concat(alphPlusOne)); // down right
+                mergeArray();
+                return
+            }
+        
+        
 
     });
     console.log(outputArray);
     console.log(resultArray);
-
-
-
-
     return resultArray
 }
 
@@ -60,7 +95,7 @@ function placeGap(mainArray){
 
 // console.log(array3); 
 
-
-placeGap(['3c','4c','5c']);
+placeGap(['3a'])
+// placeGap(['10c', '10d', '10e']);
 
 export default placeGap
