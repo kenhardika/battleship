@@ -18,63 +18,113 @@ function placeGap(mainArray){
         function mergeArray(){
               // merge the array
             resultArray = resultArray.concat(outputArray);
-            resultArray = [...new Set ([...mainArray, ...outputArray])];  
+            resultArray = [...new Set ([...mainArray,...outputArray])];  
         }
-
-        if (numbMinusOne < 1){
+        function checkRight(){
             outputArray.push((numbPlusOne).toString().concat(alph)); // right
+        }
+        function checkLeft(){
+            outputArray.push((numbMinusOne).toString().concat(alph)); // left
+        }
+        function checkUp(){
             outputArray.push((numb).toString().concat(alphMinusOne)); // up
+        }
+        function checkDown(){
             outputArray.push((numb).toString().concat(alphPlusOne)); // down
+        }
+        function checkDiagUpRight(){
             outputArray.push((numbPlusOne).toString().concat(alphMinusOne)); // up right
+        }
+        function checkDiagDownRight(){
             outputArray.push((numbPlusOne).toString().concat(alphPlusOne)); // down right
+        }
+        function checkDiagUpLeft(){
+            outputArray.push((numbMinusOne).toString().concat(alphMinusOne)); // up left
+        }
+        function checkDiagDownLeft(){
+            outputArray.push((numbMinusOne).toString().concat(alphPlusOne)); // down left
+        }
+        if (alphMinusOne == undefined && numbMinusOne < 1){ // corner up left
+            console.log('hits corner up left');
+            checkRight();
+            checkDown();
+            checkDiagDownRight();
+            mergeArray(); 
+        }
+        else if (alphPlusOne == undefined && numbMinusOne < 1){ // corner bottom left
+            console.log('hits corner bottom left');
+            checkRight();
+            checkUp();
+            checkDiagUpRight();
+            mergeArray(); 
+        }
+        else if (alphMinusOne == undefined && numbPlusOne > 10){ // corner up right 
+            console.log('hits corner up right');
+            checkLeft();
+            checkDown();
+            checkDiagDownLeft();
+            mergeArray(); 
+        }
+        else if (alphPlusOne == undefined && numbPlusOne > 10){ // corner bottom right
+            console.log('hits corner bottom right');
+            checkLeft();
+            checkUp();
+            checkDiagUpLeft();
+            mergeArray(); 
+        }
+        else if (numbMinusOne < 1){
             console.log('hit number = 0');
+            checkRight();
+            checkUp();
+            checkDown();
+            checkDiagUpRight();
+            checkDiagDownRight();
             mergeArray();
             return
         }
-        if(numbPlusOne > 10){
-            outputArray.push((numbMinusOne).toString().concat(alph)); // left
-            outputArray.push((numb).toString().concat(alphMinusOne)); // up
-            outputArray.push((numb).toString().concat(alphPlusOne)); // down
-            outputArray.push((numbMinusOne).toString().concat(alphMinusOne)); // up left
-            outputArray.push((numbMinusOne).toString().concat(alphPlusOne)); // down left
+        else if(numbPlusOne > 10){
             console.log('hit number > 10');
+            checkLeft();
+            checkUp();
+            checkDown();
+            checkDiagUpLeft();
+            checkDiagDownLeft();
             mergeArray();
             return
         }
-        
-        if (alphMinusOne == undefined){
+        else if (alphMinusOne == undefined){
             console.log('hits undefined');
-            outputArray.push((numbMinusOne).toString().concat(alph)); // left
-            outputArray.push((numbPlusOne).toString().concat(alph)); // right
-            outputArray.push((numb).toString().concat(alphPlusOne)); // down
-            outputArray.push((numbMinusOne).toString().concat(alphPlusOne)); // down left
-            outputArray.push((numbPlusOne).toString().concat(alphPlusOne)); // down right
+            checkLeft();
+            checkRight();
+            checkDown();
+            checkDiagDownLeft();
+            checkDiagDownRight(); 
             mergeArray();
             return
         }
-        if (alphPlusOne == undefined){
+        else if (alphPlusOne == undefined){
             console.log('hits undefined');
-            outputArray.push((numbMinusOne).toString().concat(alph)); // left
-            outputArray.push((numbPlusOne).toString().concat(alph)); // right
-            outputArray.push((numb).toString().concat(alphMinusOne)); // up
-            outputArray.push((numbMinusOne).toString().concat(alphMinusOne)); // up left
-            outputArray.push((numbPlusOne).toString().concat(alphMinusOne)); // up right
+            checkLeft();
+            checkRight();
+            checkUp(); 
+            checkDiagUpLeft(); 
+            checkDiagUpRight();
             mergeArray();
             return
         }
         else{
                 // horizontal check
-                outputArray.push((numbMinusOne).toString().concat(alph)); // left
-                outputArray.push((numbPlusOne).toString().concat(alph)); // right
+                checkLeft();
+                checkRight();
                 // vertical check
-                outputArray.push((numb).toString().concat(alphMinusOne)); // up
-                outputArray.push((numb).toString().concat(alphPlusOne)); // down
+                checkUp();
+                checkDown();
                 //diagonal left check
-                outputArray.push((numbMinusOne).toString().concat(alphMinusOne)); // up left
-                outputArray.push((numbMinusOne).toString().concat(alphPlusOne)); // down left
+                checkDiagUpLeft();
+                checkDiagDownLeft();
                 //diagonal right check
-                outputArray.push((numbPlusOne).toString().concat(alphMinusOne)); // up right
-                outputArray.push((numbPlusOne).toString().concat(alphPlusOne)); // down right
+                checkDiagUpRight();
+                checkDiagDownRight();
                 mergeArray();
                 return
             }
@@ -95,7 +145,7 @@ function placeGap(mainArray){
 
 // console.log(array3); 
 
-placeGap(['3a'])
+placeGap(['10j']);
 // placeGap(['10c', '10d', '10e']);
 
 export default placeGap

@@ -39,22 +39,20 @@ function startGame(){
     function AIPlacement(){
         // get the coordinate first, then going up
         // check the placeRandomizer, if any element from it will clash with current array of placement
-        const shipCoor = '1a,2a,3a,4a,5a';
+        // const shipCoor = '1a,2a,3a,4a,5a';
        // const shieldShip = shieldShip(shipCoor);
-        const fakeShip = ships(shipCoor);
-        AIGameboard.placement(fakeShip);
+        // const fakeShip = ships(shipCoor);
+        // AIGameboard.placement(fakeShip);
         //AIGameboard.checkAllLocation();
-        let bigShipCoor = placeRandomizer(5); // get data from DOM
-        console.log(bigShipCoor);
-
-        
-        if (findCommonElements(AIGameboard.checkAllLocation(), bigShipCoor) === true){ // including "the shield", you cannot place the elements in that area
-            console.log('CLASHED');
-        }
-
+        // let bigShipCoor = placeRandomizer(5); // get data from DOM
+        // console.log(bigShipCoor);
+        //     bigShipCoor = placeRandomizer(5);
+        // console.log(bigShipCoor)  
+        // if (findCommonElements(AIGameboard.checkAllLocation(), bigShipCoor) === true){ // including "the shield", you cannot place the elements in that area
+        //     console.log('CLASHED');
+        // }
         // let bigShipCoor = placeRandomizer(5).toString(); // get data from DOM
         //let bigShip = ships(bigShipCoor); // coordinate assign to ships()
-
         // console.log(bigShip.toString());
         //AIGameboard.placement(bigShip);
         //AIGameboard.checkAllLocation();
