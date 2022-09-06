@@ -45,35 +45,35 @@ function placeGap(mainArray){
             outputArray.push((numbMinusOne).toString().concat(alphPlusOne)); // down left
         }
         if (alphMinusOne == undefined && numbMinusOne < 1){ // corner up left
-            console.log('hits corner up left');
+            // console.log('hits corner up left');
             checkRight();
             checkDown();
             checkDiagDownRight();
             mergeArray(); 
         }
         else if (alphPlusOne == undefined && numbMinusOne < 1){ // corner bottom left
-            console.log('hits corner bottom left');
+            // console.log('hits corner bottom left');
             checkRight();
             checkUp();
             checkDiagUpRight();
             mergeArray(); 
         }
         else if (alphMinusOne == undefined && numbPlusOne > 10){ // corner up right 
-            console.log('hits corner up right');
+            // console.log('hits corner up right');
             checkLeft();
             checkDown();
             checkDiagDownLeft();
             mergeArray(); 
         }
         else if (alphPlusOne == undefined && numbPlusOne > 10){ // corner bottom right
-            console.log('hits corner bottom right');
+            // console.log('hits corner bottom right');
             checkLeft();
             checkUp();
             checkDiagUpLeft();
             mergeArray(); 
         }
         else if (numbMinusOne < 1){
-            console.log('hit number = 0');
+            // console.log('hit number = 0');
             checkRight();
             checkUp();
             checkDown();
@@ -83,7 +83,7 @@ function placeGap(mainArray){
             return
         }
         else if(numbPlusOne > 10){
-            console.log('hit number > 10');
+            // console.log('hit number > 10');
             checkLeft();
             checkUp();
             checkDown();
@@ -93,7 +93,7 @@ function placeGap(mainArray){
             return
         }
         else if (alphMinusOne == undefined){
-            console.log('hits undefined');
+            // console.log('hits undefined');
             checkLeft();
             checkRight();
             checkDown();
@@ -103,7 +103,7 @@ function placeGap(mainArray){
             return
         }
         else if (alphPlusOne == undefined){
-            console.log('hits undefined');
+            // console.log('hits undefined');
             checkLeft();
             checkRight();
             checkUp(); 
@@ -132,8 +132,8 @@ function placeGap(mainArray){
         
 
     });
-    console.log(outputArray);
-    console.log(resultArray);
+    // console.log(outputArray);
+    // console.log(resultArray);
     return resultArray
 }
 
@@ -145,7 +145,7 @@ function placeGap(mainArray){
 
 // console.log(array3); 
 
-placeGap(['10j']);
+// placeGap(['10j']);
 // placeGap(['10c', '10d', '10e']);
 
 export default placeGap

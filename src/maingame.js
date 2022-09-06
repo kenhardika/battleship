@@ -25,6 +25,7 @@ import gameboard from "./gameboard.js"
 import ships from "./ships.js";
 import placeRandomizer from "./placeRandomizer.js";
 import findCommonElements from "./findCommonElements.js";
+import placeGap from "./placeGap.js";
 
 
 // console.log(PLAYERONE);debugger
@@ -37,6 +38,43 @@ function startGame(){
     const AIGameboard = gameboard();
 
     function AIPlacement(){
+        let Carrier = placeRandomizer(5);
+        let Battleship = placeRandomizer(4);
+        let Cruiser = placeRandomizer(3);
+        let Destroyer = placeRandomizer(2);
+        
+        function randomizeAgain(ship, num){
+            ship = placeRandomizer(num);
+        }
+        function AIplaceShip(ship){
+            AIGameboard.placement(ship);
+        }
+        function AIaddGap(ship){
+            ship = placeGap(ship);
+        }
+
+        
+
+        //let CarrierAndGap = placeGap(Carrier);
+
+        // initiate randomizer
+        // add gap to randomizer 
+        // place first ship inside gamboard
+        // initiate randomizer
+        // check if its clashing with placed ship inside the gameboard
+        // if its clashing, re initiate randomizer, then check again.
+        // if its not clashing, add gap to new ship
+        // place ship inside the gameboard
+        
+
+
+
+
+
+
+
+
+
         // get the coordinate first, then going up
         // check the placeRandomizer, if any element from it will clash with current array of placement
         // const shipCoor = '1a,2a,3a,4a,5a';
