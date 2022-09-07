@@ -42,23 +42,43 @@ function startGame(){
     const AIGameboard = gameboard();
 
     function AIPlacement(){
-        let Carrier = placeRandomizer(5);
-        let Battleship = placeRandomizer(4);
-        let Cruiser = placeRandomizer(3);
-        let Destroyer = placeRandomizer(2);
         
-        function randomizeAgain(ship, num){
-            ship = placeRandomizer(num);
-        }
-        function AIplaceShip(ship){
-            AIGameboard.placement(ship);
-        }
-        function AIaddGap(ship){
-            ship = placeGap(ship);
-        }
+        function AIPlaceShip(val){
+            const coord = placeRandomizer(val);
+            const shield = placeGap(coord);
+            const ship = ships(coord);
+            
+            
 
-        let CarrierPlusGap = placeGap(Carrier);
-        AIGameboard.placement(Carrier);
+        }   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // let Carrier = placeRandomizer(5);
+        // let Battleship = placeRandomizer(4);
+        // let Cruiser = placeRandomizer(3);
+        // let Destroyer = placeRandomizer(2);
+        
+        // function randomizeAgain(ship, num){
+        //     ship = placeRandomizer(num);
+        // }
+        // function AIplaceShip(ship){
+        //     AIGameboard.placement(ship);
+        // }
+        // function AIaddGap(ship){
+        //     ship = placeGap(ship);
+        // }
+
+        // let CarrierPlusGap = placeGap(Carrier);
+        // AIGameboard.placement(Carrier);
 
         
         
