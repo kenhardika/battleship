@@ -26,10 +26,14 @@ import ships from "./ships.js";
 import placeRandomizer from "./placeRandomizer.js";
 import findCommonElements from "./findCommonElements.js";
 import placeGap from "./placeGap.js";
+import createGrid from "./layoutGrid.js";
 
 
 // console.log(PLAYERONE);debugger
 // console.log(playerGameboard);debugger
+
+createGrid('AI');
+createGrid('player');
 
 function startGame(){
     const PLAYERONE = player();
@@ -111,4 +115,4 @@ function startGame(){
     }
 }
 
-startGame().versusAI();
+//startGame().versusAI();

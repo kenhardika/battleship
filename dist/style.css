@@ -34,6 +34,24 @@ header {
         display: grid;
         grid-template-rows: 50% 50%;
     }
+    .layerAI, .layerPlayer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .AIGameboard, .playerGameboard{
+        display: grid;
+        justify-content: center;
+
+        grid-template-columns: repeat(10, 20px);
+        grid-template-rows: repeat(10, 20px);
+    }
+    .AIGameboard > div, .playerGameboard > div {
+        border: 1px solid black;
+        width: 20px;
+        height: 20px;
+    }
+
     .buttonsSection{
         height: 100%;
         grid-row: 2/3;
