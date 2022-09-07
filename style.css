@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap');
+
+*{
+ margin: 0;   
+ box-sizing: border-box;
+}
+header {
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 420px) {
+    
+    *{
+        font-family: 'Zilla Slab', serif;
+    }
+    
+    header{
+        height: 10vh;
+        font-weight: 600;
+    }
+    .layout {
+        display: grid;
+
+        grid-template-columns: 100vw;
+        grid-template-rows: 85% 15%;
+        height: 80vh;
+    }
+    .gameboard{
+        height: 100%;
+        grid-row: 1/2;
+
+        display: grid;
+        grid-template-rows: 50% 50%;
+    }
+    .buttonsSection{
+        height: 100%;
+        grid-row: 2/3;
+
+        display:  flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 10vh;
+    }
+
+}
+
+@media screen and (min-width: 420px) {
+    *{
+        font-family: 'Zilla Slab', serif;
+    }
+    header{
+        height: 10vh;
+        font-weight: 600;
+    }
+}
