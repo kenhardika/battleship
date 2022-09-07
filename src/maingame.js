@@ -53,6 +53,10 @@ function startGame(){
             ship = placeGap(ship);
         }
 
+        let CarrierPlusGap = placeGap(Carrier);
+        AIGameboard.placement(Carrier);
+
+        
         
 
         //let CarrierAndGap = placeGap(Carrier);
