@@ -34,22 +34,17 @@ import createGrid from "./layoutGrid.js";
 
 createGrid('AI');
 createGrid('player');
+const PLAYERONE = player(); 
+const AI = player();
+const playerGameboard = gameboard();
+const AIGameboard = gameboard();
 
 function startGame(){
-    const PLAYERONE = player();
-    const AI = player();
-    const playerGameboard = gameboard();
-    const AIGameboard = gameboard();
-
     function AIPlacement(){
-        
         function AIPlaceShip(val){
             const coord = placeRandomizer(val);
             const shield = placeGap(coord);
             const ship = ships(coord);
-            
-            
-
         }   
         
         
@@ -134,5 +129,7 @@ function startGame(){
         }
     }
 }
+
+export {PLAYERONE, playerGameboard, AI, AIGameboard}
 
 //startGame().versusAI();
