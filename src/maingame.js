@@ -40,17 +40,30 @@ const playerGameboard = gameboard();
 const AIGameboard = gameboard();
 
 function startGame(){
-    function AIPlacement(){
-        
+    let CarrierGap = [];
+
+    function AIPlacement(val){
+        let newShipCoord = placeRandomizer(val);
+        if(findCommonElements(newShipCoord, AIGameboard.checkAllLocation()) === true){
+            // CarrierCoord = placeRandomizer(val);
+            // CarrierGap = placeGap(newShipCoord);
+            console.log('clashed: reset initialize');
+        } else {
+            AIGameboard.placement(ships(newShipCoord));
+        }
     }
 
     return {
         versusAI: ()=>{
-            AIPlacement();
+            AIPlacement(5);
+            AIPlacement(5);
+            AIPlacement(3);
         }
     }
 }
-
+startGame().versusAI();
+AIGameboard.checkAllLocation();
+AIGameboard.checkTotalHealth();
 export {PLAYERONE, playerGameboard, AI, AIGameboard}
 
 //startGame().versusAI();
