@@ -65,6 +65,8 @@ const gameboard = ()=> {
             console.log(allLocation);
             return allLocation
         },
+        allLocation
+        ,
         checkAttackMissed: ()=>{
             console.log(attackMissed);
             return attackMissed

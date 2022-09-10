@@ -44,12 +44,27 @@ function startGame(){
 
     function AIPlacement(val){
         let newShipCoord = placeRandomizer(val);
-        if(findCommonElements(newShipCoord, AIGameboard.checkAllLocation()) === true){
-            // CarrierCoord = placeRandomizer(val);
-            // CarrierGap = placeGap(newShipCoord);
+
+        function AIPlaceShip(ship){
+            AIGameboard.placement(ships(ship));
+        }
+
+        function checkCommonElements(newest, current, val){
+            if (findCommonElements(newest, current) === true){
+                newShipCoord = placeRandomizer(val);
+                checkCommonElements(newShipCoord, AIGameboard.allLocation, val);
+            }
+            else {
+                AIPlaceShip(newShipCoord);
+            }
+        }
+        if(findCommonElements(newShipCoord, AIGameboard.allLocation) === true){
             console.log('clashed: reset initialize');
+            newShipCoord = placeRandomizer(val);
+            checkCommonElements(newShipCoord, AIGameboard.allLocation, val);
+            // CarrierGap = placeGap(newShipCoord);
         } else {
-            AIGameboard.placement(ships(newShipCoord));
+            AIPlaceShip(newShipCoord);
         }
     }
 
