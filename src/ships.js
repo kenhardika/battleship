@@ -1,6 +1,6 @@
 
-const ships = (loc) =>{ // length will be from size of the ship
-    let coord = loc.split(',');
+const ships = (coord) =>{ // length will be from size of the ship
+    // let coord = loc.split(',');
     let healthBar = coord.length;
     return {
         length: ()=>{

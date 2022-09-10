@@ -41,91 +41,12 @@ const AIGameboard = gameboard();
 
 function startGame(){
     function AIPlacement(){
-        function AIPlaceShip(val){
-            const coord = placeRandomizer(val);
-            const shield = placeGap(coord);
-            const ship = ships(coord);
-        }   
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        // let Carrier = placeRandomizer(5);
-        // let Battleship = placeRandomizer(4);
-        // let Cruiser = placeRandomizer(3);
-        // let Destroyer = placeRandomizer(2);
-        
-        // function randomizeAgain(ship, num){
-        //     ship = placeRandomizer(num);
-        // }
-        // function AIplaceShip(ship){
-        //     AIGameboard.placement(ship);
-        // }
-        // function AIaddGap(ship){
-        //     ship = placeGap(ship);
-        // }
-
-        // let CarrierPlusGap = placeGap(Carrier);
-        // AIGameboard.placement(Carrier);
-
-        
-        
-
-        //let CarrierAndGap = placeGap(Carrier);
-
-        // initiate randomizer
-        // add gap to randomizer 
-        // place first ship inside gamboard
-        // initiate randomizer
-        // check if its clashing with placed ship inside the gameboard
-        // if its clashing, re initiate randomizer, then check again.
-        // if its not clashing, add gap to new ship
-        // place ship inside the gameboard
-        
-
-
-
-
-
-
-
-
-
-        // get the coordinate first, then going up
-        // check the placeRandomizer, if any element from it will clash with current array of placement
-        // const shipCoor = '1a,2a,3a,4a,5a';
-       // const shieldShip = shieldShip(shipCoor);
-        // const fakeShip = ships(shipCoor);
-        // AIGameboard.placement(fakeShip);
-        //AIGameboard.checkAllLocation();
-        // let bigShipCoor = placeRandomizer(5); // get data from DOM
-        // console.log(bigShipCoor);
-        //     bigShipCoor = placeRandomizer(5);
-        // console.log(bigShipCoor)  
-        // if (findCommonElements(AIGameboard.checkAllLocation(), bigShipCoor) === true){ // including "the shield", you cannot place the elements in that area
-        //     console.log('CLASHED');
-        // }
-        // let bigShipCoor = placeRandomizer(5).toString(); // get data from DOM
-        //let bigShip = ships(bigShipCoor); // coordinate assign to ships()
-        // console.log(bigShip.toString());
-        //AIGameboard.placement(bigShip);
-        //AIGameboard.checkAllLocation();
     }
 
     return {
         versusAI: ()=>{
-        // AI automatically place the ships 
-        // AI randomizer placement mirip random button human placement
-        // AIGameboard.placement()
-        AIPlacement();
-        // player manually place the ship
+            AIPlacement();
         }
     }
 }
