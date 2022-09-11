@@ -67,7 +67,10 @@ const gameboard = ()=> {
             return allLocation
         },
         addGapLocation: (array)=> {
-            gapLocation = gapLocation.push(array);
+            // gapLocation.push(array);
+            array.forEach((arr)=>{
+                gapLocation.push(arr);
+            });
         }, 
         checkGapLocation: ()=> {
             console.log(gapLocation);

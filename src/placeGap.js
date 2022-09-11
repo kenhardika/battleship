@@ -21,28 +21,28 @@ function placeGap(mainArray){
             resultArray = [...new Set ([...mainArray,...outputArray])];  
         }
         function checkRight(){
-            outputArray.push((numbPlusOne).toString().concat(alph)); // right
+            outputArray.push(alph.concat((numbPlusOne).toString())); // right
         }
         function checkLeft(){
-            outputArray.push((numbMinusOne).toString().concat(alph)); // left
+            outputArray.push(alph.concat((numbMinusOne).toString())); // left
         }
         function checkUp(){
-            outputArray.push((numb).toString().concat(alphMinusOne)); // up
+            outputArray.push(alphMinusOne.concat((numb).toString())); // up
         }
         function checkDown(){
-            outputArray.push((numb).toString().concat(alphPlusOne)); // down
+            outputArray.push(alphPlusOne.concat((numb).toString())); // down
         }
         function checkDiagUpRight(){
-            outputArray.push((numbPlusOne).toString().concat(alphMinusOne)); // up right
+            outputArray.push(alphMinusOne.concat((numbPlusOne).toString())); // up right
         }
         function checkDiagDownRight(){
-            outputArray.push((numbPlusOne).toString().concat(alphPlusOne)); // down right
+            outputArray.push(alphPlusOne.concat((numbPlusOne).toString())); // down right
         }
         function checkDiagUpLeft(){
-            outputArray.push((numbMinusOne).toString().concat(alphMinusOne)); // up left
+            outputArray.push(alphMinusOne.concat((numbMinusOne).toString())); // up left
         }
         function checkDiagDownLeft(){
-            outputArray.push((numbMinusOne).toString().concat(alphPlusOne)); // down left
+            outputArray.push(alphPlusOne.concat((numbMinusOne).toString())); // down left
         }
         if (alphMinusOne == undefined && numbMinusOne < 1){ // corner up left
             // console.log('hits corner up left');

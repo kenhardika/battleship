@@ -8,7 +8,7 @@ function createGrid(whos){
     alphArray.forEach((alp)=>{
         for (let i=1; i <= MAX_WIDTH; i++ ){
             const grid = document.createElement('div');
-            grid.className=`${i}${alp}`;
+            grid.className=`${alp}${i}`;
             grid.addEventListener('click', ()=>{
                 // console.log(grid.className);
                 // clicked the grid

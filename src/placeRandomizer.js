@@ -9,7 +9,7 @@ function placeRandomizer(leng){
 
     if (randomAxis === 0){ // X axis blocks
         for (let i = 0; i <leng; i++ ){
-            alphaNum = (randomNumber + i).toString().concat(randomAlp);
+            alphaNum = randomAlp.concat((randomNumber + i).toString());
             array.push(alphaNum);
         }
         // console.log(array);
@@ -19,7 +19,7 @@ function placeRandomizer(leng){
     else { // Y axis blocks
         for (let i = 0; i <leng; i++ ){
             const alpLoop = alphabet.charAt(alphabet.indexOf(randomAlp) + i);
-            alphaNum = (randomNumber).toString().concat(alpLoop);
+            alphaNum = alpLoop.concat((randomNumber).toString());
             array.push(alphaNum);
         }
         // console.log(array);
