@@ -67,7 +67,12 @@ header {
         justify-content: center;
         height: 5vh;
     }
-
+    .gap{
+        background-color: #2fafff;
+    }
+    .ship{
+        background-color: #ff4c31;
+    }
 }
 
 @media screen and (min-width: 420px) {
