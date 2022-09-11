@@ -111,7 +111,7 @@ function startGame(){
 startGame().versusAI();
 AIGameboard.checkAllLocation();
 AIGameboard.checkTotalHealth();
-layoutGridPlacedColor();
+layoutGridPlacedColor(AIGameboard, 'AI');
 
 export {PLAYERONE, playerGameboard, AI, AIGameboard}
 
