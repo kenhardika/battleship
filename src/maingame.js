@@ -101,8 +101,10 @@ function startGame(){
     return {
         versusAI: ()=>{
             AIPlacement(5);
-            AIPlacement(5);
+            AIPlacement(4);
             AIPlacement(3);
+            AIPlacement(3);
+            AIPlacement(2);
         }
     }
 }
