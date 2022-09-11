@@ -40,7 +40,7 @@ const playerGameboard = gameboard();
 const AIGameboard = gameboard();
 
 function startGame(){
-    let CarrierGap = [];
+    let totalGap = [];
 
     function AIPlacement(val){
         let newShipCoord = placeRandomizer(val);
@@ -58,6 +58,8 @@ function startGame(){
                 AIPlaceShip(newShipCoord);
             }
         }
+        // starts here
+        
         if(findCommonElements(newShipCoord, AIGameboard.allLocation) === true){
             console.log('clashed: reset initialize');
             newShipCoord = placeRandomizer(val);
