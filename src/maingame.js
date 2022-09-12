@@ -75,6 +75,13 @@ function startGame(){
         board.deleteAllShip();
         layoutGridPlacedColor(board, user);
     }
+    function autoAttackAI(){
+        // pick randomized grid from layout
+        // launch attack() on that grid
+        // check gameboard.receiveAttack()
+        // if missed or hit receiveAttack() will sort it out
+        // check gameboard.allLocation() to see if it is endgame or not 
+    }
     return {
         startVsAI: ()=>{
             emptyTheGameboard(playerGameboard, 'player');
@@ -86,6 +93,15 @@ function startGame(){
         restartGame: ()=> {
             emptyTheGameboard(playerGameboard, 'player');
             emptyTheGameboard(AIGameboard, 'AI');
+        },
+        attackMode: (user)=> {
+            const gamelayout = document.querySelector(`.${user}Gameboard`);
+            const allGrid = gamelayout.querySelectorAll('div');
+            allGrid.forEach((grid)=>{
+                grid.addEventListener('click', ()=>{
+                    console.log( grid.className + ' attacked');
+                })
+            });
         }
     }
 }
@@ -97,6 +113,7 @@ function startGameBtn(){
     startBtn.addEventListener('click', ()=>{
         console.log('Play the game!');
         game.startVsAI();
+        game.attackMode('AI');
     });
     restartBtn.addEventListener('click', ()=>{
         console.log('restarted');
