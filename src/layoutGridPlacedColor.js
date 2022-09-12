@@ -1,8 +1,15 @@
 function layoutGridPlacedColor(gameboard, user){
     let currentGap = gameboard.allGapLocation;
-    let currentShip = gameboard.checkAllLocation();
-    if (!currentGap){
-        return
+    let currentShip = gameboard.allLocation();
+    console.log(currentGap);
+    if (currentGap.length === 0){
+        console.log('hit array gaplocation empty')
+        const layer = document.querySelector(`.${user}Gameboard`);
+        const gap = layer.querySelectorAll('div');
+            gap.forEach((g)=>{
+                g.classList.remove('gap');
+                g.classList.remove('ship');
+            });
     }
     else {
         currentGap.forEach((arrayLoc)=>{

@@ -61,10 +61,22 @@ const gameboard = ()=> {
                 return totalHealth
             } 
         },
-        checkAllLocation: ()=>{
+        allLocation: ()=>{
+            refreshAllLocation();
+            return allLocation
+        },
+        checkAllLocation:()=>{
             refreshAllLocation();
             console.log(allLocation);
             return allLocation
+        },
+        deleteAllShip: ()=> {
+            allShip.length = 0;
+            totalHealth = 0;
+            allLocation.length = 0;
+            attackMissed.length=0;
+            allGapLocation.length = 0;
+            refreshAllLocation();
         },
         addGapLocation: (array)=> {
             // gapLocation.push(array);
@@ -80,8 +92,7 @@ const gameboard = ()=> {
             console.log(attackMissed);
             return attackMissed
         },
-        allGapLocation,
-        allLocation
+        allGapLocation
     }
 }
 
