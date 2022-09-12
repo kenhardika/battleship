@@ -4,7 +4,7 @@ const gameboard = ()=> {
     let totalHealth = 0;
     let allLocation = [];
     let attackMissed = [];
-    let gapLocation = [];
+    let allGapLocation = [];
 
     function refreshAllLocation(){
         let newLocation = [];
@@ -69,18 +69,18 @@ const gameboard = ()=> {
         addGapLocation: (array)=> {
             // gapLocation.push(array);
             array.forEach((arr)=>{
-                gapLocation.push(arr);
+                allGapLocation.push(arr);
             });
         }, 
         checkGapLocation: ()=> {
-            console.log(gapLocation);
-            return gapLocation
+            console.log(allGapLocation);
+            return allGapLocation
         },
         checkAttackMissed: ()=>{
             console.log(attackMissed);
             return attackMissed
         },
-        gapLocation,
+        allGapLocation,
         allLocation
     }
 }

@@ -41,61 +41,28 @@ const playerGameboard = gameboard();
 const AIGameboard = gameboard();
 
 function startGame(){
-    let totalGap = [];
     function AIPlacement(val){
         let newShipCoord = placeRandomizer(val);
         let newShipWithGap = placeGap(newShipCoord);
 
-        function AIPlaceShip(ship){
-            AIGameboard.placement(ships(ship));
-        }
-
-        function AIPlaceGap(ship){
-            AIGameboard.addGapLocation(
-                placeGap(ship)
-            );
-        }
-
-        function addTotalGap(){
-            // merge the array
-          totalGap = totalGap.concat(newShipWithGap);
-          totalGap = [...new Set ([...newShipWithGap])];  
-        //   console.log('total gap under me')
-        //   console.log(totalGap);
-        }
-
-        function checkCommonElements(newest, current, val){
-            if (findCommonElements(newest, current) === true){
-                console.log('clashed initiate recurese check')
-                newShipCoord = placeRandomizer(val);
-                newShipWithGap = placeGap(newShipCoord);
-                checkCommonElements(newShipCoord, AIGameboard.gapLocation, val);
-            }
-            else {
-                AIPlaceShip(newShipCoord);
-                AIPlaceGap(newShipCoord);
-                addTotalGap();
-                // add total gap
-            }
-        }
-
-        // starts here
-        // changing into include the gap
-        console.log('totalGap and Gap location under me')
-        console.log(totalGap);
-        console.log(AIGameboard.gapLocation);
-        if(findCommonElements(newShipWithGap, AIGameboard.gapLocation) === true){
-            console.log('clashed: reset initialize');
+        function reRandomizeWithGap(){
             newShipCoord = placeRandomizer(val);
             newShipWithGap = placeGap(newShipCoord);
-            checkCommonElements(newShipWithGap, AIGameboard.gapLocation, val);
-            // CarrierGap = placeGap(newShipCoord);
-        } else {
-            AIPlaceShip(newShipCoord);
-            AIPlaceGap(newShipCoord);
-            addTotalGap();
-            // add totalgap 
         }
+
+        function checkAndAddElements(newest, current, val){
+            if (findCommonElements(newest, current) === false){ // if there IS NOT common elements inside of both array (not clashed), proceed to add to gameboard
+                AIGameboard.placement(ships(newShipCoord));
+                AIGameboard.addGapLocation(placeGap(newShipCoord));
+            }
+            else { // if there IS common element inside both array, randomize the ship placement again, then repeat this function
+                console.log('clashed initiate recurese check');
+                reRandomizeWithGap();
+                checkAndAddElements(newShipCoord, AIGameboard.allGapLocation, val); // repeat this function again
+            }
+        }
+        // starts here
+        checkAndAddElements(newShipWithGap, AIGameboard.allGapLocation, val);
     }
 
     return {
@@ -114,5 +81,3 @@ AIGameboard.checkTotalHealth();
 layoutGridPlacedColor(AIGameboard, 'AI');
 
 export {PLAYERONE, playerGameboard, AI, AIGameboard}
-
-//startGame().versusAI();
