@@ -95,7 +95,7 @@ function startGame(){
             emptyTheGameboard(AIGameboard, 'AI');
         },
         attackMode: (user)=> {
-            const gamelayout = document.querySelector(`.${user}Gameboard`);
+            const gamelayout = document.querySelector(`.${user}Gameboard`); // still broke every attack mode is initiated over2 again so, 4x start game = 4x attackmode()
             const allGrid = gamelayout.querySelectorAll('div');
             allGrid.forEach((grid)=>{
                 grid.addEventListener('click', ()=>{
