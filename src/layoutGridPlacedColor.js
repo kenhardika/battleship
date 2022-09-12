@@ -1,9 +1,9 @@
 function layoutGridPlacedColor(gameboard, user){
     let currentGap = gameboard.allGapLocation;
     let currentShip = gameboard.allLocation();
-    console.log(currentGap);
+    // console.log(currentGap);
     if (currentGap.length === 0){
-        console.log('hit array gaplocation empty')
+        // console.log('hit array gaplocation empty')
         const layer = document.querySelector(`.${user}Gameboard`);
         const gap = layer.querySelectorAll('div');
             gap.forEach((g)=>{

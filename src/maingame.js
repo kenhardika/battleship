@@ -29,10 +29,6 @@ import placeGap from "./placeGap.js";
 import createGrid from "./layoutGrid.js";
 import layoutGridPlacedColor from "./layoutGridPlacedColor.js";
 
-
-// console.log(PLAYERONE);debugger
-// console.log(playerGameboard);debugger
-
 createGrid('AI');
 createGrid('player');
 const PLAYERONE = player(); 
@@ -55,11 +51,13 @@ function startGame(){
             if (findCommonElements(newest, current) === false){ // if there IS NOT common elements inside of both array (not clashed), proceed to add to gameboard
                 board.placement(ships(newShipCoord));
                 board.addGapLocation(placeGap(newShipCoord));
+                return
             }
             else { // if there IS common element inside both array, randomize the ship placement again, then repeat this function
                 // console.log('clashed initiate recurese check');
                 reRandomizeWithGap();
                 checkAndAddElements(newShipCoord, board.allGapLocation, val); // repeat this function again
+                return
             }
         }
         // starts here
@@ -73,51 +71,40 @@ function startGame(){
         randomPlacement(board,3);
         randomPlacement(board,2);
     }
-    function emptyTheGameboard(board){
+    function emptyTheGameboard(board, user){
         board.deleteAllShip();
+        layoutGridPlacedColor(board, user);
     }
     return {
         startVsAI: ()=>{
-            // emptyTheGameboard(AIGameboard);
-            // emptyTheGameboard(playerGameboard);
+            emptyTheGameboard(playerGameboard, 'player');
+            emptyTheGameboard(AIGameboard, 'AI');
             setShipRandom(AIGameboard);
             setShipRandom(playerGameboard);
             layoutGridPlacedColor(playerGameboard, 'player');
         },
-        randomizePlayerShipPlacement: ()=> {
-            emptyTheGameboard(playerGameboard);
-            setShipRandom(playerGameboard);
-            layoutGridPlacedColor(playerGameboard, 'player');
+        restartGame: ()=> {
+            emptyTheGameboard(playerGameboard, 'player');
+            emptyTheGameboard(AIGameboard, 'AI');
         }
     }
 }
 
 function startGameBtn(){
     const startBtn = document.querySelector('#startGameBtn');
-    const randomBtn = document.querySelector('#randomPlaceBtn');
+    const restartBtn = document.querySelector('#restartBtn');
 
     startBtn.addEventListener('click', ()=>{
         console.log('Play the game!');
         game.startVsAI();
     });
-    randomBtn.addEventListener('click', ()=>{
-        console.log('randomized');
-        playerGameboard.deleteAllShip();
-        layoutGridPlacedColor(playerGameboard, 'player');
+    restartBtn.addEventListener('click', ()=>{
+        console.log('restarted');
+        game.restartGame();
     });
 }
 
-// LAST UPDATE 14:13 
-// FIGURING OUT HOW TO CLEAR ARRAY OF GAMEBOARD
-// STILL NYANGKUT OR STUCK
-// BUT CLEAR THE DOM IS OK,
-// WHEN I STARTGAMEBTN AGAIN, THE PREVIOUS ARRAY IS STILL THERE AND THE RECURSIVE CAUSING MEMORY EXCEED
-
 startGameBtn()
- // when clicked randomize your ship
-
-// AIGameboard.checkAllLocation();
-// AIGameboard.checkTotalHealth();
 
 console.log('Game Ready');
 export {PLAYERONE, playerGameboard, AI, AIGameboard}
