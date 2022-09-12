@@ -39,9 +39,10 @@ const PLAYERONE = player();
 const AI = player();
 const playerGameboard = gameboard();
 const AIGameboard = gameboard();
+const game = startGame();
 
 function startGame(){
-    function AIPlacement(val){
+    function randomPlacement(board, val){ // you can use this randomPlacement with AI or Player
         let newShipCoord = placeRandomizer(val);
         let newShipWithGap = placeGap(newShipCoord);
 
@@ -52,32 +53,44 @@ function startGame(){
 
         function checkAndAddElements(newest, current, val){
             if (findCommonElements(newest, current) === false){ // if there IS NOT common elements inside of both array (not clashed), proceed to add to gameboard
-                AIGameboard.placement(ships(newShipCoord));
-                AIGameboard.addGapLocation(placeGap(newShipCoord));
+                board.placement(ships(newShipCoord));
+                board.addGapLocation(placeGap(newShipCoord));
             }
             else { // if there IS common element inside both array, randomize the ship placement again, then repeat this function
                 console.log('clashed initiate recurese check');
                 reRandomizeWithGap();
-                checkAndAddElements(newShipCoord, AIGameboard.allGapLocation, val); // repeat this function again
+                checkAndAddElements(newShipCoord, board.allGapLocation, val); // repeat this function again
             }
         }
         // starts here
-        checkAndAddElements(newShipWithGap, AIGameboard.allGapLocation, val);
+        checkAndAddElements(newShipWithGap, board.allGapLocation, val);
     }
 
     return {
-        versusAI: ()=>{
-            AIPlacement(5);
-            AIPlacement(4);
-            AIPlacement(3);
-            AIPlacement(3);
-            AIPlacement(2);
+        startVsAI: ()=>{
+            // place the board you use and the length of ship, then randomPlacement() will place it randomly including gap between ships
+            randomPlacement(AIGameboard,5); 
+            randomPlacement(AIGameboard,4);
+            randomPlacement(AIGameboard,3);
+            randomPlacement(AIGameboard,3);
+            randomPlacement(AIGameboard,2);
+        },
+        randomizeShipPlacement: ()=> {
+            randomPlacement(playerGameboard,5); 
+            randomPlacement(playerGameboard,4);
+            randomPlacement(playerGameboard,3);
+            randomPlacement(playerGameboard,3);
+            randomPlacement(playerGameboard,2);
+            layoutGridPlacedColor(playerGameboard, 'player');
         }
+
     }
 }
-startGame().versusAI();
+// startGame().versusAI();
+
+game.randomizeShipPlacement(); // when clicked randomize your ship
+
 AIGameboard.checkAllLocation();
 AIGameboard.checkTotalHealth();
-layoutGridPlacedColor(AIGameboard, 'AI');
 
 export {PLAYERONE, playerGameboard, AI, AIGameboard}

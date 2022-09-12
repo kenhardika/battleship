@@ -6,13 +6,12 @@ function layoutGridPlacedColor(gameboard, user){
     }
     else {
         currentGap.forEach((arrayLoc)=>{
-                let layer = document.querySelector(`.${user}Gameboard`);
-                let gap = layer.querySelector(`.${arrayLoc}`);
-                gap.classList.add('gap');
+            const layer = document.querySelector(`.${user}Gameboard`);
+            let gap = layer.querySelector(`.${arrayLoc}`);
+            gap.classList.add('gap');
         });
-
         currentShip.forEach((curship)=>{
-            let layer = document.querySelector(`.${user}Gameboard`);
+            const layer = document.querySelector(`.${user}Gameboard`);
             let ship = layer.querySelector(`.${curship}`);
             ship.classList.add('ship');
         });

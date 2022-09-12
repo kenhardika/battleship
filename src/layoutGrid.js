@@ -17,9 +17,5 @@ function createGrid(whos){
             layer.append(grid);
         }
     });
-    // for(let i = 0; i < MAX_WIDTH; i++){
-    //     const grid = document.createElement('div');
-    // }
-
 }
 export default createGrid
