@@ -30,23 +30,23 @@ const gameboard = ()=> {
             return
         },
         receiveAttack: (coor, user)=>{
-            let coord = coor.toString();
+            const coord = coor.toString();
             allReceivedAttackLocation.push(coord);
             if(allLocation.includes(coord) === false){
-                console.log('Attack missed')
+                console.log('Attack missed to:' + user)
                 attackMissedCounter(coord);
                 markedAttack(user, coord);
                 return 
             } 
             else {
-                console.log('Attack Hit!')
+                console.log('Attack Hit! to: ' + user)
                 allShip.forEach((ship)=>{
                     ship.hit(coord);
                 });
                 // refresh the allLocation Array so you cannot hit twice on the same coordinate
                 refreshAllLocation()
                 if (allLocation.length < 1){
-                    console.log('ALL SHIPS HAS BEEN DESTROYED, RIP BOZO')
+                    console.log('ALL SHIPS HAS BEEN DESTROYED, RIP TO: ' + user)
                 }
                 markedHit(user, coord);
                 // console.log(allLocation);
