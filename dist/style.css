@@ -76,6 +76,10 @@ header {
     .attacked{
         background-color: crimson;
     }
+    .hit{
+        background-color: black;
+    }
+    
 }
 
 @media screen and (min-width: 420px) {

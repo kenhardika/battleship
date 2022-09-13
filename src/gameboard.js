@@ -1,3 +1,4 @@
+import { markedAttack, markedHit } from "./markedAttackMove.js";
 
 const gameboard = ()=> {
     let allShip = [];
@@ -5,6 +6,7 @@ const gameboard = ()=> {
     let allLocation = [];
     let attackMissed = [];
     let allGapLocation = [];
+    let allReceivedAttackLocation = [];
 
     function refreshAllLocation(){
         let newLocation = [];
@@ -27,28 +29,33 @@ const gameboard = ()=> {
             // marks the coordinate with ships' marks
             return
         },
-        receiveAttack: (coor)=>{
-            if(allLocation.includes(coor) === false){
+        receiveAttack: (coor, user)=>{
+            let coord = coor.toString();
+            allReceivedAttackLocation.push(coord);
+            if(allLocation.includes(coord) === false){
                 console.log('Attack missed')
-                attackMissedCounter(coor);
+                attackMissedCounter(coord);
+                markedAttack(user, coord);
                 return 
             } 
             else {
                 console.log('Attack Hit!')
                 allShip.forEach((ship)=>{
-                    ship.hit(coor);
+                    ship.hit(coord);
                 });
                 // refresh the allLocation Array so you cannot hit twice on the same coordinate
                 refreshAllLocation()
                 if (allLocation.length < 1){
                     console.log('ALL SHIPS HAS BEEN DESTROYED, RIP BOZO')
                 }
+                markedHit(user, coord);
                 // console.log(allLocation);
             } 
             // toggle checkAllShip() to make sure if its not endgame
             // if not marks the coordinate with missedAttack()
             //return
         },
+        allReceivedAttackLocation,
         checkTotalHealth: ()=>{
             // check the healthbar of each ships with ship.healthbar()
             // allShip.forEach((ship)=>{
@@ -81,6 +88,7 @@ const gameboard = ()=> {
             allLocation.length = 0;
             attackMissed.length=0;
             allGapLocation.length = 0;
+            allReceivedAttackLocation.length = 0;
             refreshAllLocation();
         },
         addGapLocation: (array)=> {

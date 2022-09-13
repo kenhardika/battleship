@@ -28,7 +28,7 @@ import findCommonElements from "./findCommonElements.js";
 import placeGap from "./placeGap.js";
 import createGrid from "./layoutGrid.js";
 import layoutGridPlacedColor from "./layoutGridPlacedColor.js";
-import markedAttack from "./markedAttack.js";
+import {markedAttack, resetMarkedAttack} from "./markedAttackMove.js";
 
 createGrid('AI');
 createGrid('player');
@@ -64,6 +64,35 @@ function startGame(){
         // starts here
         checkAndAddElements(newShipWithGap, board.allGapLocation, val);
     }
+
+    function randomAttack(board, user){
+        let newAttackCoord = placeRandomizer(1); // only one grid per attack allowed
+        
+        function reNewAttack(){
+            newAttackCoord = placeRandomizer(1);
+        }
+
+        function checkRepeatedAttack(newest, current, user){
+            console.log(newest);
+            console.log(current);
+            if (!current){
+                board.receiveAttack(newAttackCoord, user);
+                return
+            }
+            else if (findCommonElements(newest, current) === false){
+                board.receiveAttack(newAttackCoord, user);
+                return
+            }
+            else {
+                reNewAttack();
+                checkRepeatedAttack(newAttackCoord, board.allReceivedAttackLocation, user);
+                return
+            }
+        }
+        checkRepeatedAttack(newAttackCoord, board.allReceivedAttackLocation, user);
+    }
+
+
     function setShipRandom(board){
         // place the board you use and the length of ship, then randomPlacement() will place it randomly including gap between ships
         randomPlacement(board,5); 
@@ -88,9 +117,9 @@ function startGame(){
                 }
                 else if (PLAYERONE.checkAttack() == "ON" ){
                     console.log( grid.className + ' attacked');
-                    AIGameboard.receiveAttack(grid.className);
+                    AIGameboard.receiveAttack(grid.className, 'AI');
                     AIGameboard.checkTotalHealth();
-                    markedAttack('AI', grid.className);
+                    randomAttack(playerGameboard, 'player');
                     // PLAYERONE.toggleAttackOFF();
                     // AI.toggleAttackON();
                     // toggle AI auto Attack
@@ -104,7 +133,9 @@ function startGame(){
     
     function autoAttackAI(){
         // pick randomized grid from layout
+        // const randomGrid = randomPlacement(playerGameboard, 1);
         // launch attack() on that grid
+        // playerGameboard.receiveAttack(randomGrid);
         // check gameboard.receiveAttack()
         // if missed or hit receiveAttack() will sort it out
         // check gameboard.allLocation() to see if it is endgame or not 
@@ -114,6 +145,8 @@ function startGame(){
         startVsAI: ()=>{
             emptyTheGameboard(playerGameboard, 'player');
             emptyTheGameboard(AIGameboard, 'AI');
+            resetMarkedAttack('AI');
+            resetMarkedAttack('player');
             setShipRandom(AIGameboard);
             setShipRandom(playerGameboard);
             layoutGridPlacedColor(playerGameboard, 'player');
@@ -124,6 +157,8 @@ function startGame(){
         restartGame: ()=> {
             emptyTheGameboard(playerGameboard, 'player');
             emptyTheGameboard(AIGameboard, 'AI');
+            resetMarkedAttack('AI');
+            resetMarkedAttack('player');
         }
     }
 }
