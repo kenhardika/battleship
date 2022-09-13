@@ -29,6 +29,7 @@ import placeGap from "./placeGap.js";
 import createGrid from "./layoutGrid.js";
 import layoutGridPlacedColor from "./layoutGridPlacedColor.js";
 import {markedAttack, resetMarkedAttack} from "./markedAttackMove.js";
+import clearChild from "./clearChild.js";
 
 createGrid('AI');
 createGrid('player');
@@ -129,7 +130,7 @@ function startGame(){
         });
     }
     attackMode('AI');
-    attackMode('player');
+    // attackMode('player');
     
     function autoAttackAI(){
         // pick randomized grid from layout
@@ -143,6 +144,11 @@ function startGame(){
     
     return {
         startVsAI: ()=>{
+            clearChild('AIGameboard');
+            clearChild('playerGameboard');
+            createGrid('AI');
+            createGrid('player');
+            attackMode('AI');
             emptyTheGameboard(playerGameboard, 'player');
             emptyTheGameboard(AIGameboard, 'AI');
             resetMarkedAttack('AI');
@@ -159,6 +165,10 @@ function startGame(){
             emptyTheGameboard(AIGameboard, 'AI');
             resetMarkedAttack('AI');
             resetMarkedAttack('player');
+            clearChild('AIGameboard');
+            clearChild('playerGameboard');
+            createGrid('AI');
+            createGrid('player');
         }
     }
 }
