@@ -71,7 +71,10 @@ header {
         background-color: #2fafff;
     }
     .ship{
-        background-color: #ff4c31;
+        background-color: green;
+    }
+    .attacked{
+        background-color: crimson;
     }
 }
 

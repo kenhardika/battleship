@@ -14,7 +14,7 @@ const player = () => {
         toggleAttackON : ()=> attackStatus = "ON",
         toggleAttackOFF : ()=> attackStatus = "OFF",
         checkAttack: ()=> {
-            console.log(attackStatus); 
+            // console.log(attackStatus); 
             return attackStatus
         },
         

@@ -28,6 +28,7 @@ import findCommonElements from "./findCommonElements.js";
 import placeGap from "./placeGap.js";
 import createGrid from "./layoutGrid.js";
 import layoutGridPlacedColor from "./layoutGridPlacedColor.js";
+import markedAttack from "./markedAttack.js";
 
 createGrid('AI');
 createGrid('player');
@@ -75,6 +76,32 @@ function startGame(){
         board.deleteAllShip();
         layoutGridPlacedColor(board, user);
     }
+    function attackMode(user){
+        const gamelayout = document.querySelector(`.${user}Gameboard`); // still broke every attack mode is initiated over2 again so, 4x start game = 4x attackmode()
+        const allGrid = gamelayout.querySelectorAll('div');
+        allGrid.forEach((grid)=>{
+            grid.addEventListener('click', ()=>{
+                if( PLAYERONE.checkAttack() == "OFF" ) {
+                    //AI initiate auto Attack
+                    PLAYERONE.toggleAttackON();
+                    return 
+                }
+                else if (PLAYERONE.checkAttack() == "ON" ){
+                    console.log( grid.className + ' attacked');
+                    AIGameboard.receiveAttack(grid.className);
+                    AIGameboard.checkTotalHealth();
+                    markedAttack('AI', grid.className);
+                    // PLAYERONE.toggleAttackOFF();
+                    // AI.toggleAttackON();
+                    // toggle AI auto Attack
+                    return
+                } 
+            });
+        });
+    }
+    attackMode('AI');
+    attackMode('player');
+    
     function autoAttackAI(){
         // pick randomized grid from layout
         // launch attack() on that grid
@@ -82,6 +109,7 @@ function startGame(){
         // if missed or hit receiveAttack() will sort it out
         // check gameboard.allLocation() to see if it is endgame or not 
     }
+    
     return {
         startVsAI: ()=>{
             emptyTheGameboard(playerGameboard, 'player');
@@ -89,19 +117,13 @@ function startGame(){
             setShipRandom(AIGameboard);
             setShipRandom(playerGameboard);
             layoutGridPlacedColor(playerGameboard, 'player');
+            PLAYERONE.toggleAttackON();
+            // layoutGridPlacedColor(AIGameboard, 'AI');
+
         },
         restartGame: ()=> {
             emptyTheGameboard(playerGameboard, 'player');
             emptyTheGameboard(AIGameboard, 'AI');
-        },
-        attackMode: (user)=> {
-            const gamelayout = document.querySelector(`.${user}Gameboard`); // still broke every attack mode is initiated over2 again so, 4x start game = 4x attackmode()
-            const allGrid = gamelayout.querySelectorAll('div');
-            allGrid.forEach((grid)=>{
-                grid.addEventListener('click', ()=>{
-                    console.log( grid.className + ' attacked');
-                })
-            });
         }
     }
 }
@@ -113,7 +135,6 @@ function startGameBtn(){
     startBtn.addEventListener('click', ()=>{
         console.log('Play the game!');
         game.startVsAI();
-        game.attackMode('AI');
     });
     restartBtn.addEventListener('click', ()=>{
         console.log('restarted');
