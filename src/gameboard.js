@@ -32,6 +32,7 @@ const gameboard = ()=> {
         receiveAttack: (coor, user)=>{
             const coord = coor.toString();
             allReceivedAttackLocation.push(coord);
+            
             if(allLocation.includes(coord) === false){
                 console.log('Attack missed to:' + user)
                 attackMissedCounter(coord);
@@ -47,8 +48,11 @@ const gameboard = ()=> {
                 refreshAllLocation()
                 if (allLocation.length < 1){
                     console.log('ALL SHIPS HAS BEEN DESTROYED, RIP TO: ' + user)
+                    return
                 }
-                markedHit(user, coord);
+                else {
+                    markedHit(user, coord);
+                }
                 // console.log(allLocation);
             } 
             // toggle checkAllShip() to make sure if its not endgame
@@ -57,17 +61,12 @@ const gameboard = ()=> {
         },
         allReceivedAttackLocation,
         checkTotalHealth: ()=>{
-            // check the healthbar of each ships with ship.healthbar()
-            // allShip.forEach((ship)=>{
-            //     ship.location(); 
-            //     totalHealth = totalHealth + ship.healthBar();
-            // });
-            // console.log(totalHealth);
             refreshAllLocation();
             totalHealth = allLocation.length;
             // if all the healthbar is 0 then the game is ended
             if(totalHealth <= 0){
                 console.log("GAME OVER ALL OF YOUR SHIPS WRECKED");
+                return
             }
             else{
                 return 

@@ -84,11 +84,20 @@ function startGame(){
         const allGrid = gamelayout.querySelectorAll('div');
         allGrid.forEach((grid)=>{
             grid.addEventListener('click', ()=>{
-                // console.log( grid.className + ' attacked');
-                AIGameboard.receiveAttack(grid.className, 'AI');
-                AIGameboard.checkTotalHealth();
-                randomAttack(playerGameboard, 'player');
-                return
+                if(grid.classList.contains('attacked') || grid.classList.contains('hit')){
+                    return
+                }
+                else{// console.log( grid.className + ' attacked');
+                    if(AIGameboard.allLocation().length < 1){
+                        return
+                    }
+                    else{
+                        AIGameboard.receiveAttack(grid.className, 'AI');
+                        AIGameboard.checkTotalHealth();
+                        randomAttack(playerGameboard, 'player');
+                        return
+                    }
+                }
             });
         });
     }

@@ -1,8 +1,8 @@
 function markedAttack(user, className){
         const gamelayout = document.querySelector(`.${user}Gameboard`);
         const grid = gamelayout.querySelector(`.${className}`);
-        // console.log(className);
         // console.log(grid);
+        // console.log(className);
         grid.classList.add('attacked');
         return
 }
