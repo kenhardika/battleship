@@ -137,15 +137,4 @@ function placeGap(mainArray){
     return resultArray
 }
 
-// let array1 = ['a','b','c'];
-// let array2 = ['z','a','s'];
-
-// let array3 = array1.concat(array2);
-// array3 = [...new Set([...array1,...array2])]
-
-// console.log(array3); 
-
-// placeGap(['10j']);
-// placeGap(['10c', '10d', '10e']);
-
 export default placeGap

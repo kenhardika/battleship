@@ -55,9 +55,6 @@ const gameboard = ()=> {
                 }
                 // console.log(allLocation);
             } 
-            // toggle checkAllShip() to make sure if its not endgame
-            // if not marks the coordinate with missedAttack()
-            //return
         },
         allReceivedAttackLocation,
         checkTotalHealth: ()=>{
@@ -107,26 +104,4 @@ const gameboard = ()=> {
         allGapLocation
     }
 }
-
 export default gameboard;
-
-// const playa = gameboard();
-// const bigShipCoor = '6B 7B 8B 9B 10B';
-// const midShipCoor = '4B 4C 4D';
-// const midShip = ships(midShipCoor);
-// const bigShip = ships(bigShipCoor);
-
-// playa.placement(bigShip);
-// playa.placement(midShip);
-// playa.receiveAttack("4B");debugger
-// playa.receiveAttack("4C");debugger
-// playa.receiveAttack("4D");debugger
-// playa.receiveAttack("3B");debugger
-// playa.checkAllLocation();
-// playa.checkAttackMissed();
-// playa.checkTotalHealth(); 
-// revise this
-// playa.placement('1A 2A 3A', ships(3));
-// playa.placement('3B 4B', ships(2));
-// playa.placement('6B 7B 8B 9B 10B', ships(5));
-// playa.placement('6E 7E 8E 9E 10E', ships(5));

@@ -87,9 +87,9 @@ function startGame(){
                 if(grid.classList.contains('attacked') || grid.classList.contains('hit')){
                     return
                 }
-                else{// console.log( grid.className + ' attacked');
+                else{
                     if(AIGameboard.allLocation().length < 1){
-                        return
+                        return // GAME END
                     }
                     else{
                         AIGameboard.receiveAttack(grid.className, 'AI');
