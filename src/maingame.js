@@ -88,7 +88,7 @@ function startGame(){
                     return
                 }
                 else{
-                    if(AIGameboard.allLocation().length < 1){
+                    if(AIGameboard.allLocation().length < 1 || playerGameboard.allLocation().length < 1){
                         return // GAME END
                     }
                     else{
