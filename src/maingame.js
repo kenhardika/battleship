@@ -6,12 +6,14 @@ import placeGap from "./placeGap.js";
 import createGrid from "./layoutGrid.js";
 import layoutGridPlacedColor from "./layoutGridPlacedColor.js";
 import clearChild from "./clearChild.js";
+import popUpGameEnd from "./popUpGameEnd.js";
 
 createGrid('AI');
 createGrid('player');
 const playerGameboard = gameboard();
 const AIGameboard = gameboard();
 const game = startGame();
+const gameEnd = popUpGameEnd();
 
 function startGame(){
     function randomPlacement(board, val){ // you can use this randomPlacement with AI or Player
@@ -89,6 +91,7 @@ function startGame(){
                 }
                 else{
                     if(AIGameboard.allLocation().length < 1 || playerGameboard.allLocation().length < 1){
+                        gameEnd.active();
                         return // GAME END
                     }
                     else{
@@ -120,6 +123,7 @@ function startGame(){
 function startGameBtn(){
     const startBtn = document.querySelector('#startGameBtn');
     const restartBtn = document.querySelector('#restartBtn');
+    const randomPlaceBtn = document.querySelector('#randomPlaceBtn');
 
     startBtn.addEventListener('click', ()=>{
         console.log('Play the game!');
@@ -128,6 +132,10 @@ function startGameBtn(){
     restartBtn.addEventListener('click', ()=>{
         console.log('restarted');
         game.restartGame();
+    });
+    randomPlaceBtn.addEventListener('click', ()=>{
+        console.log('randomize');
+        // popUpGameEnd().active();
     });
 }
 

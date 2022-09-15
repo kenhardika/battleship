@@ -22,7 +22,33 @@ header {
 .hit{
     background-color: black;
 }
+.active {
+    position: absolute;
+    left: 25%;
+    right: 50%;
+    top: 25%;
+    bottom: 50%;
+    width: 80%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.653);
+    opacity: 1;
+}
 
+.deactive{
+    pointer-events: none;
+    opacity: 0;
+}
+
+.layerPopUp{
+    position: absolute;
+    left: 25%;
+    right: 50%;
+    top: 25%;
+    bottom: 50%;
+    width: 80%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.653);
+}
 
 @media screen and (max-width: 420px) {
     
