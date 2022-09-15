@@ -1,3 +1,4 @@
+import { game } from "./maingame";
 
 function popUpGameEnd(){
     const layer = document.querySelector('.gameboard');
@@ -14,7 +15,7 @@ function popUpGameEnd(){
     layerBtn.className='layerBtnPopUp';
     layerPopUp.className='layerPopUp';
     layerPopUp.classList.add('deactive');
-    
+
     layerText.append(text);
     layerBtn.append(btn);
     layerPopUp.append(layerText, layerBtn);
@@ -23,6 +24,7 @@ function popUpGameEnd(){
     btn.onclick = ()=>{
         layerPopUp.classList.remove('active');
         layerPopUp.classList.add('deactive');
+        game.restartGame();
     }
     return {
         active: ()=> {

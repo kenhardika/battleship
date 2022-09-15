@@ -1,3 +1,4 @@
+import { game, gameEnd } from "./maingame.js";
 import { markedAttack, markedHit } from "./markedAttackMove.js";
 
 const gameboard = ()=> {
@@ -47,7 +48,8 @@ const gameboard = ()=> {
                 // refresh the allLocation Array so you cannot hit twice on the same coordinate
                 refreshAllLocation()
                 if (allLocation.length < 1){
-                    console.log('ALL SHIPS HAS BEEN DESTROYED, RIP TO: ' + user)
+                    console.log('ALL SHIPS HAS BEEN DESTROYED, RIP TO: ' + user);
+                    gameEnd.active();
                     return
                 }
                 else {

@@ -91,10 +91,11 @@ function startGame(){
                 }
                 else{
                     if(AIGameboard.allLocation().length < 1 || playerGameboard.allLocation().length < 1){
-                        gameEnd.active();
+                        // gameEnd.active(); // telat nih, a bit too late, need another click before initiate
+                        // game.restartGame();
                         return // GAME END
                     }
-                    else{
+                    else if(AIGameboard.allLocation().length > 1 || playerGameboard.allLocation().length > 1){
                         AIGameboard.receiveAttack(grid.className, 'AI');
                         AIGameboard.checkTotalHealth();
                         randomAttack(playerGameboard, 'player');
@@ -104,7 +105,6 @@ function startGame(){
             });
         });
     }
-    attackMode('AI');
 
     return {
         startVsAI: ()=>{
@@ -131,10 +131,11 @@ function startGameBtn(){
     });
     restartBtn.addEventListener('click', ()=>{
         console.log('restarted');
-        game.restartGame();
+        // game.restartGame();
     });
     randomPlaceBtn.addEventListener('click', ()=>{
         console.log('randomize');
+        gameEnd.active();
         // popUpGameEnd().active();
     });
 }
@@ -142,4 +143,4 @@ function startGameBtn(){
 startGameBtn()
 
 console.log('Game Ready');
-export {playerGameboard, AIGameboard}
+export {playerGameboard, AIGameboard, game, gameEnd}
