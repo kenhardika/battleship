@@ -27,7 +27,13 @@ function popUpGameEnd(){
         game.restartGame();
     }
     return {
-        active: ()=> {
+        active: (loser)=> {
+            if (loser == 'AI'){
+                text.textContent = 'Congrats For The Win Player One!'
+            }
+            else{
+                text.textContent = 'You are Defeated by the AI!'
+            }
             layerPopUp.classList.remove('deactive');
             layerPopUp.classList.add('active');
             // layerPopUp.style.opacity='1';

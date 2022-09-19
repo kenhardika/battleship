@@ -49,7 +49,7 @@ const gameboard = ()=> {
                 refreshAllLocation()
                 if (allLocation.length < 1){
                     console.log('ALL SHIPS HAS BEEN DESTROYED, RIP TO: ' + user);
-                    gameEnd.active();
+                    gameEnd.active(user);
                     return
                 }
                 else {
