@@ -67,7 +67,7 @@ header {
     background-color: rgba(0, 0, 0, 0.653);
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 1000px) {
     
     *{
         font-family: 'Zilla Slab', serif;
@@ -95,6 +95,7 @@ header {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
     }
     .AIGameboard, .playerGameboard{
         display: grid;
@@ -127,7 +128,7 @@ header {
  
 }
 
-@media screen and (min-width: 421px) {
+@media screen and (min-width: 1001px) {
     *{
         font-family: 'Zilla Slab', serif;
     }
@@ -152,11 +153,16 @@ header {
     }
     .layerAI, .layerPlayer{
         display: flex;
-        /* flex-direction: row; */
+        flex-direction: column;
         height: 100%;
         align-items: center;
         justify-content: center;
     }
+
+    .AIname, .playerName{
+        font-size: 23px;
+    }
+
     .AIGameboard, .playerGameboard{
         display: grid;
         justify-content: center;
@@ -178,6 +184,25 @@ header {
         align-items: center;
         justify-content: center;
     }
+
+    .layerTextPopUp #textPopUp{
+        font-weight: 600;
+        color: #ececec;
+        font-size: clamp(3vw, 3rem, 100%);
+    }
+
+    #btnPopUp{
+        width: 30%;
+        height: 50px;
+        background-color: black;
+        color: #ececec;
+        font-weight: 600;
+        font-size: clamp(1.5vw, 3rem, 100%);
+        border: 2px solid #ececec;
+        border-radius: 20px;
+        text-align: center;
+    }
+
     footer{
         display: flex;
         align-items: center;
