@@ -29,7 +29,7 @@ function popUpGameEnd(){
     return {
         active: (loser)=> {
             if (loser == 'AI'){
-                text.textContent = 'Congrats For The Win Player One!'
+                text.textContent = 'Congratulations For The Win!'
             }
             else{
                 text.textContent = 'You are Defeated by the AI!'
