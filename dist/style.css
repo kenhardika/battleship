@@ -13,9 +13,9 @@ header {
     border: 2px solid rgb(92, 92, 92);
 }
 
-.gap{
+/* .gap{
     background-color: #2fafff;
-}
+} */
 .ship{
     background-color: green;
 }
@@ -26,11 +26,14 @@ header {
     background-color: crimson;
 }
 .hit{
-    background-color: black;
+    background-image: url(./img/x.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /* background-color: black; */
 }
-.hit:hover{
+/* .hit:hover{
     background-color: black;
-}
+} */
 .active {
     opacity: 1;
     transition: opacity 500ms;
