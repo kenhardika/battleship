@@ -131,7 +131,7 @@ function startGameBtn(){
     });
     restartBtn.addEventListener('click', ()=>{
         console.log('restarted');
-        // game.restartGame();
+        game.restartGame();
     });
     randomPlaceBtn.addEventListener('click', ()=>{
         console.log('randomize');
